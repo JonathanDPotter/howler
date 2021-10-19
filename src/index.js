@@ -1,15 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
-import { store } from './app/store';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import { store, rrfProps } from "./firebase-store";
+import { Provider } from "react-redux";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+import App from "./App";
+import "./index.scss";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
