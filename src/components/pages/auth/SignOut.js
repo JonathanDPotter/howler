@@ -35,6 +35,7 @@ const SignOut = () => {
 
   return (
     <div className="page-container">
+      <h1 className="page-name">Sign Out</h1>
       <form>
         <input type="button" value="Sign Out" onClick={handleClick} />
         <br />
