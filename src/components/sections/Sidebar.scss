@@ -1,0 +1,19 @@
+@use "../../theme";
+
+.sidebar {
+  height: 100%;
+  width: 20vw;
+  border: theme.$main-border;
+  .howler-icon {
+    height: 2rem;
+  }
+  .nav {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    .icon {
+      margin-top: 2rem;
+      color: theme.$main-blue;
+    }
+  }
+}

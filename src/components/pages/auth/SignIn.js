@@ -44,6 +44,11 @@ const SignIn = () => {
           required
         />
         <input type="submit" value="submit" />
+        <input
+          type="button"
+          value="sign up"
+          onClick={() => history.push("/signup")}
+        />
       </form>
     </div>
   );
