@@ -2,12 +2,12 @@
 
 $main-blue: #1da1f2;
 $back-white: #fff;
-$border-line-color: #eff3f4;
+$line-color: #DBDCDD;
 
 // sizing
 
-$border-line-size: 1px;
+$line-size: 1px;
 
 // border
 
-$main-border: $border-line-size solid $border-line-color;
+$main-border: $line-size solid $line-color;

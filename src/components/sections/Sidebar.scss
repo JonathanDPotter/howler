@@ -1,18 +1,30 @@
 @use "../../theme";
 
+$icon-sizing: 1.7rem;
+
+@mixin icon-margin {
+  margin-top: $icon-sizing;
+  margin-left: 10vw;
+}
+
 .sidebar {
-  height: 100%;
-  width: 20vw;
-  border: theme.$main-border;
+  width: 100%;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+
   .howler-icon {
+    @include icon-margin;
     height: 2rem;
   }
+
   .nav {
     display: flex;
     flex-direction: column;
-    font-size: 2rem;
+    font-size: $icon-sizing;
+
     .icon {
-      margin-top: 2rem;
+      @include icon-margin;
       color: theme.$main-blue;
     }
   }

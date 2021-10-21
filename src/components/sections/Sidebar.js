@@ -11,7 +11,9 @@ import "./Sidebar.scss";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <HowlerIcon fill="#1da1f2" className="howler-icon" />
+      <Link to="/about">
+        <HowlerIcon fill="#1da1f2" className="howler-icon" title="about" />
+      </Link>
       <nav className="nav">
         <Link to="/" title="home">
           <FontAwesomeIcon icon={faHome} className="icon" />
