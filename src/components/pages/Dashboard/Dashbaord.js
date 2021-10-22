@@ -1,7 +1,9 @@
 import React from "react";
 // components
-import Sidebar from "../../sections/Sidebar";
-import HowlInput from "../../sections/HowlInput";
+import Sidebar from "../../sections/Sidebar/Sidebar";
+import HowlInput from "../../sections/HowlInput/HowlInput";
+import Timeline from "../../sections/Timeline/Timeline";
+// styles
 import "./Dashboard.scss";
 
 const Dashboard = () => {
@@ -12,6 +14,7 @@ const Dashboard = () => {
       </div>
       <div className="middle-container">
         <HowlInput />
+        <Timeline />
       </div>
       <div className="right-empty"></div>
     </div>

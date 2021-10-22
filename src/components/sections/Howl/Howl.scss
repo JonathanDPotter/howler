@@ -1,0 +1,53 @@
+@use "../../../theme";
+
+.howl {
+  border-bottom: theme.$line-size solid theme.$line-color;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+
+  .name-text-img-container {
+    width: 90%;
+    margin: 1.5rem auto;
+
+    .username {
+      margin: 0;
+    }
+
+    .howl-text {
+      margin: 1rem 0;
+    }
+    .img-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .img {
+        border: 2px solid theme.$line-color;
+        border-radius: 20px;
+        max-height: 30rem;
+        margin: auto;
+      }
+    }
+  }
+  .buttons-container {
+    width: 30%;
+    padding: 1rem;
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      label {
+        color: theme.$main-blue;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+    }
+  }
+  .comments {
+    .comment{
+      margin: 1rem 5rem;
+    }
+  }
+}

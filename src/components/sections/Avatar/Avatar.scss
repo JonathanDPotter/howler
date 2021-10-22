@@ -1,0 +1,19 @@
+@use "../../../theme";
+
+.avatar {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: theme.$main-border;
+  border-radius: theme.$border-radius;
+
+  img,
+  .howler-icon {
+    max-height: 80px;
+    max-width: 80px;
+    border-radius: theme.$border-radius;
+  }
+}

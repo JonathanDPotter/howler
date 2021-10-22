@@ -1,27 +1,30 @@
-@use "../../theme";
+@use "../../../theme";
 
 .howl-box {
-  border-bottom: theme.$line-size solid theme.$line-color;
+  border-bottom: theme.$main-border;
   height: fit-content;
   width: 100%;
   max-width: 1000px;
-  padding: 1rem;
-  margin: 0 auto;
+  padding: 1rem 0;
 
   .howl-form {
     display: flex;
     flex-direction: column;
-
+    
     .avatar-howl-container {
       display: flex;
-      padding-left: 1rem;
+
+      .avatar {
+        min-height: 80px;
+        min-width: 80px;
+      }
 
       .howl-input {
         margin-left: 1rem;
         border: none;
         outline: none;
         resize: none;
-        max-width: 70rem;
+        max-width: 60vw;
         font-size: 1.2rem;
       }
     }
@@ -29,8 +32,8 @@
     hr {
       border: 0;
       display: block;
-      width: 70%;
-      background-color: theme.$line-size;
+      max-width: 70%;
+      background-color: theme.$line-color;
       height: theme.$line-size;
       margin: 0.5rem 10% 0.5rem 20%;
     }

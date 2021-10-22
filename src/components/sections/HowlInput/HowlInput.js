@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //components
-import Avatar from "./Avatar";
-import { storage, firestore } from "../../firebase-store";
+import Avatar from "../Avatar/Avatar";
+import { storage, firestore } from "../../../firebase-store";
 import { useSelector } from "react-redux";
 //styles
 import "./HowlInput.scss";
@@ -64,6 +64,7 @@ const HowlInput = () => {
             <Avatar
               photoURL={auth ? auth.photoURL : ""}
               displayName={auth ? auth.displayName : ""}
+              className="avatar"
             />
             <textarea
               id="howl-input"
