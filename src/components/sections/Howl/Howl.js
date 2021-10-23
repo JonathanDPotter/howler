@@ -16,7 +16,7 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
   useFirestoreConnect([{ collection: "users" }]);
 
   const [commenting, toggleCommenting] = useState(false);
-  const [newComment, setNewComment] = useState(null);
+  const [newComment, setNewComment] = useState("");
   const [users, setUsers] = useState(null);
   const [user, setUser] = useState(null);
 
@@ -46,6 +46,8 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
   const submitComment = (event) => {
     event.preventDefault();
 
+    console.log(event.currentTarget.name);
+
     const resetComment = () => {
       toggleCommenting(!commenting);
       setNewComment(null);
@@ -54,7 +56,7 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
     if (comments) {
       firestore
         .collection("howls")
-        .doc(docId)
+        .doc(event.target.name)
         .update({
           comments: [...comments, newComment],
         })
@@ -62,7 +64,7 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
     } else {
       firestore
         .collection("howls")
-        .doc(docId)
+        .doc(event.target.name)
         .update({ comments: [newComment] })
         .then(() => resetComment());
     }
@@ -109,21 +111,27 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
             <label htmlFor="like-button">{likes > 0 && likes}</label>
           </form>
         </div>
-        {commenting ? (
+        {commenting && (
           <div className="comment-form">
-            <form action="submit" onSubmit={submitComment}>
+            <form action="submit" onSubmit={submitComment} name={docId}>
               <input
                 type="text"
                 name="comment-input"
                 className="comment-input"
                 maxLength={128}
                 onChange={handleChange}
-                value={newComment ? newComment : ""}
+                value={newComment}
+                placeholder="Enter comment"
               />
-              <button type="submit">Submit</button>
+              <div className="buttons">
+                <button type="submit">Submit</button>
+                <button onClick={() => toggleCommenting(!commenting)}>
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
-        ) : null}
+        )}
         <div className="comments">
           {comments
             ? comments.map((comment, index) => {
