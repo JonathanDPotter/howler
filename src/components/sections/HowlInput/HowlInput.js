@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { v4 as uuid } from "uuid";
 //components
 import Avatar from "../Avatar/Avatar";
 import { storage, firestore } from "../../../firebase-store";
@@ -21,13 +22,16 @@ const HowlInput = () => {
     event.preventDefault();
 
     const addHowl = () => {
-      firestore.collection("howls").add({
+      const docId = uuid();
+
+      firestore.collection("howls").doc(docId).set({
         userId: auth.uid,
         text: inputText,
         image: imgRef,
         time: Date.now(),
-        comments: null,
-        likes: 0,
+        comments: [],
+        likes: [],
+        docId: docId,
       });
       setInputText("");
       setInputImg(null);

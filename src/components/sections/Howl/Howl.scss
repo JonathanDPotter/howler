@@ -39,10 +39,15 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      label {
+      button, p {
         color: theme.$main-blue;
         font-size: 1.2rem;
         cursor: pointer;
+        border: none;
+        background-color: white;
+        :active {
+          font-size: 1.5rem;
+        }
       }
     }
   }
@@ -69,5 +74,8 @@
     .comment {
       margin: 1rem 5rem;
     }
+  }
+  .liked {
+    color: red;
   }
 }

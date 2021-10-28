@@ -12,7 +12,7 @@ import timeCalc from "./timeCalc";
 // icons
 import { faStar, faComment } from "@fortawesome/free-solid-svg-icons";
 
-const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
+const Howl = ({ howl }) => {
   useFirestoreConnect([{ collection: "users" }]);
 
   const [commenting, toggleCommenting] = useState(false);
@@ -20,23 +20,27 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
   const [users, setUsers] = useState(null);
   const [user, setUser] = useState(null);
 
+  const { docId, userId, text, likes, comments, time, image } = howl;
+
   const getUsers = useSelector((state) => state.firestore.ordered.users);
 
   useEffect(() => {
-    if (!users) {
-      setUsers(getUsers);
-    } else {
-      setUser(users.find((doc) => doc.uid === userId));
-    }
+    users
+      ? setUser(users.find((doc) => doc.uid === userId))
+      : setUsers(getUsers);
   }, [users, user, userId, getUsers]);
 
   const handleLike = () => {
-    const newLikesTotal = likes + 1;
-    firestore.collection("howls").doc(docId).update({ likes: newLikesTotal });
-  };
+    const index = likes.indexOf(user.id);
+    let newLikes;
 
-  const handleComment = () => {
-    toggleCommenting(!commenting);
+    index !== 0
+      ? likes.includes(user.id)
+        ? (newLikes = { likes: [likes.splice(index, 1)] })
+        : (newLikes = { likes: [...likes, user.id] })
+      : (newLikes = { likes: [] });
+
+    firestore.collection("howls").doc(docId).update(newLikes);
   };
 
   const handleChange = (event) => {
@@ -46,28 +50,20 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
   const submitComment = (event) => {
     event.preventDefault();
 
-    console.log(event.currentTarget.name);
+    const { id } = event.currentTarget;
+
+    console.log(id);
 
     const resetComment = () => {
       toggleCommenting(!commenting);
-      setNewComment(null);
+      setNewComment("");
     };
 
-    if (comments) {
-      firestore
-        .collection("howls")
-        .doc(event.target.name)
-        .update({
-          comments: [...comments, newComment],
-        })
-        .then(() => resetComment());
-    } else {
-      firestore
-        .collection("howls")
-        .doc(event.target.name)
-        .update({ comments: [newComment] })
-        .then(() => resetComment());
-    }
+    firestore
+      .collection("howls")
+      .doc(id)
+      .update({ comments: [...comments, newComment] })
+      .then(() => resetComment());
   };
 
   return (
@@ -89,31 +85,30 @@ const Howl = ({ docId, userId, text, image, time, comments, likes }) => {
           ) : null}
         </div>
         <div className="buttons-container">
-          <form action="" className="buttons">
-            <label htmlFor="comment-button">
-              <FontAwesomeIcon icon={faComment} className="image-icon" />
-            </label>
-            <input
-              id="comment-button"
-              type="checkbox"
-              onClick={handleComment}
-              style={{ display: "none" }}
-            />
-            <label htmlFor="like-button">
-              <FontAwesomeIcon icon={faStar} className="image-icon" />
-            </label>
-            <input
-              id="like-button"
-              type="checkbox"
-              onClick={handleLike}
-              style={{ display: "none" }}
-            />
-            <label htmlFor="like-button">{likes > 0 && likes}</label>
-          </form>
+          <div className="buttons">
+            <button className="comment-button">
+              <FontAwesomeIcon
+                icon={faComment}
+                className="image-icon"
+                onClick={() => toggleCommenting(!commenting)}
+              />
+            </button>
+            <button className="like-button" onClick={handleLike}>
+              <FontAwesomeIcon
+                icon={faStar}
+                className={
+                  user && likes.includes(user.id)
+                    ? "image-icon liked"
+                    : "image-icon"
+                }
+              />
+            </button>
+            <p>{likes.length > 0 && likes.length}</p>
+          </div>
         </div>
         {commenting && (
           <div className="comment-form">
-            <form action="submit" onSubmit={submitComment} name={docId}>
+            <form action="submit" onSubmit={submitComment} id={docId}>
               <input
                 type="text"
                 name="comment-input"

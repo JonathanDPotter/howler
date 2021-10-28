@@ -21,13 +21,7 @@ const Timeline = () => {
         sortedHowls.map((howl) => (
           <Howl
             key={howl.id}
-            image={howl.image}
-            text={howl.text}
-            time={howl.time}
-            userId={howl.userId}
-            docId={howl.id}
-            comments={howl.comments}
-            likes={howl.likes}
+            howl={howl}
           />
         ))}
     </div>

@@ -17,8 +17,8 @@
     grid-area: middle;
     width: 100%;
     min-height: 100vh;
-    border-left: theme.$main-border;
     border-right: theme.$main-border;
+    border-left: theme.$main-border;
     display: flex;
     flex-direction: column;
   }
