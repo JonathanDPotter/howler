@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import firebase from "firebase/app";
+import { firestore } from "../../../firebase-store";
+import { useFirestoreConnect } from "react-redux-firebase";
+// components
 import Avatar from "../../sections/Avatar/Avatar";
-import { useHistory } from "react-router";
 
 const Profile = () => {
+  useFirestoreConnect([{ collection: "users" }]);
+
   const [inputImg, setInputImg] = useState(null);
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-
-  const history = useHistory();
+  const [photoURL, setPhotoURL] = useState("");
 
   const currentUser = useSelector((state) => state.firebase.auth);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    firestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .update({ name, bio, photoURL });
+  };
 
   return (
     <div className="profile-page">
@@ -20,7 +31,7 @@ const Profile = () => {
         displayName={currentUser.displayName}
       />
       <h1 className="user-name">{currentUser.displayName}</h1>
-      <form action="submit" className="profile-form">
+      <form action="submit" className="profile-form" onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -35,7 +46,10 @@ const Profile = () => {
           type="file"
           id="image-input"
           accept="image/jpg image/png"
-          onChange={(event) => setInputImg(event.target.files[0])}
+          onChange={(event) => {
+            setInputImg(event.target.files[0]);
+            setPhotoURL(URL.createObjectURL(event.target.files[0]));
+          }}
         />
         {inputImg && (
           <img
@@ -55,6 +69,7 @@ const Profile = () => {
           value={bio}
           placeholder="enter a short description of yourself"
         ></textarea>
+        <input type="submit" value="submit" />
       </form>
     </div>
   );

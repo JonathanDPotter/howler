@@ -14,9 +14,17 @@ const SignIn = () => {
 
     firebase
       .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        history.push("/");
+      .setPersistence(firebase.auth.Persistence.SESSION)
+      .then(() => {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            history.push("/");
+          })
+          .catch((error) => {
+            window.alert(error.message);
+          });
       })
       .catch((error) => {
         window.alert(error.message);

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuid } from "uuid";
+import { useFirestoreConnect } from "react-redux-firebase";
 //components
 import Avatar from "../Avatar/Avatar";
 import { storage, firestore } from "../../../firebase-store";
@@ -11,10 +12,18 @@ import "./HowlInput.scss";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 const HowlInput = () => {
+  useFirestoreConnect([{ collection: "users" }]);
   // local state
   const [inputText, setInputText] = useState("");
   const [inputImg, setInputImg] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+
   const { auth } = useSelector((state) => state.firebase);
+  const { users } = useSelector((state) => state.firestore.ordered);
+
+  useEffect(() => {
+    users && setCurrentUser(users.find((user) => user.uid === auth.uid));
+  }, [users, auth]);
 
   let imgRef = "";
 
@@ -65,9 +74,10 @@ const HowlInput = () => {
       <div className="howl-box">
         <form className="howl-form" onSubmit={handleSubmit}>
           <div className="avatar-howl-container">
+            {currentUser && currentUser.displayName}
             <Avatar
-              photoURL={auth ? auth.photoURL : ""}
-              displayName={auth ? auth.displayName : ""}
+              photoURL={currentUser ? currentUser.photoURL : ""}
+              displayName={currentUser ? currentUser.name : ""}
               className="avatar"
             />
             <textarea

@@ -24,7 +24,7 @@ const SignUp = () => {
       .then((userCredential) => {
         const { uid, photoURL } = userCredential.user;
         userCredential.user.updateProfile({ displayName }).then(
-          firestore.collection("users").add({
+          firestore.collection("users").doc(uid).set({
             displayName,
             email,
             uid,
