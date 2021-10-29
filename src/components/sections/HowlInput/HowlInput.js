@@ -81,13 +81,13 @@ const HowlInput = () => {
             ></textarea>
           </div>
           <hr />
-          {inputImg ? (
+          {inputImg && (
             <img
               src={URL.createObjectURL(inputImg)}
               alt="user input"
               className="img"
             />
-          ) : null}
+          )}
           <div className="buttons">
             <label htmlFor="image-input">
               <FontAwesomeIcon icon={faImage} className="image-icon" />
@@ -99,9 +99,9 @@ const HowlInput = () => {
               onChange={(event) => setInputImg(event.target.files[0])}
             />
             <label htmlFor="howl-btn" className="btn-label">
-              {inputText.length > 0 ? (
+              {inputText.length > 0 && (
                 <p className="chars-remaining">{281 - inputText.length}</p>
-              ) : null}
+              )}
               <button id="howl-btn" className="howl-btn">
                 Howl
               </button>

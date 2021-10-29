@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // images & icons
 import { ReactComponent as HowlerIcon } from "../../../images/howlerIcon.svg";
-import { faHome, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUser, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 // style
 import "./Sidebar.scss";
 
@@ -20,6 +20,9 @@ const Sidebar = () => {
         </Link>
         <Link to="profile" title="profile">
           <FontAwesomeIcon icon={faUser} className="icon" />
+        </Link>
+        <Link to="/signout" title="signout">
+          <FontAwesomeIcon icon={faUserSlash} className="icon" />
         </Link>
       </nav>
     </div>
