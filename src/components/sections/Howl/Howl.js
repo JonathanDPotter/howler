@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { firestore } from "../../../firebase-store";
-// styles
-import "./Howl.scss";
 // components
 import Avatar from "../Avatar/Avatar";
+import CommentInput from "./CommentInput";
+import Comment from "./Comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // functions
 import timeCalc from "./timeCalc";
+// styles
+import "./Howl.scss";
 // icons
 import { faStar, faComment } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,26 +20,27 @@ const Howl = ({ howl }) => {
   const [commenting, toggleCommenting] = useState(false);
   const [newComment, setNewComment] = useState("");
   const [users, setUsers] = useState(null);
-  const [user, setUser] = useState(null);
+  const [op, setOp] = useState(null);
 
   const { docId, userId, text, likes, comments, time, image } = howl;
 
   const getUsers = useSelector((state) => state.firestore.ordered.users);
 
+  const currentUser = useSelector((state) => state.firebase.auth);
+
+  // establish user that posted this howl (op = original poster)
   useEffect(() => {
-    users
-      ? setUser(users.find((doc) => doc.uid === userId))
-      : setUsers(getUsers);
-  }, [users, user, userId, getUsers]);
+    users ? setOp(users.find((doc) => doc.uid === userId)) : setUsers(getUsers);
+  }, [users, op, userId, getUsers]);
 
   const handleLike = () => {
-    const index = likes.indexOf(user.id);
-    let newLikes;
+    const index = likes.indexOf(currentUser.uid);
+    let newLikes = [];
 
     index !== 0
-      ? likes.includes(user.id)
+      ? likes.includes(currentUser.id)
         ? (newLikes = { likes: [likes.splice(index, 1)] })
-        : (newLikes = { likes: [...likes, user.id] })
+        : (newLikes = { likes: [...likes, currentUser.uid] })
       : (newLikes = { likes: [] });
 
     firestore.collection("howls").doc(docId).update(newLikes);
@@ -51,8 +54,7 @@ const Howl = ({ howl }) => {
     event.preventDefault();
 
     const { id } = event.currentTarget;
-
-    console.log(id);
+    const { uid, photoURL } = currentUser;
 
     const resetComment = () => {
       toggleCommenting(!commenting);
@@ -62,7 +64,12 @@ const Howl = ({ howl }) => {
     firestore
       .collection("howls")
       .doc(id)
-      .update({ comments: [...comments, newComment] })
+      .update({
+        comments: [
+          ...comments,
+          { uid: uid, photoURL: photoURL, text: newComment },
+        ],
+      })
       .then(() => resetComment());
   };
 
@@ -70,19 +77,17 @@ const Howl = ({ howl }) => {
     <div className="howl">
       <div className="avatar-container">
         <Avatar
-          photoURL={user ? user.photoURL : ""}
-          displayName={user ? user.displayName : ""}
+          photoURL={op ? op.photoURL : ""}
+          displayName={op ? op.displayName : ""}
         />
       </div>
       <div className="name-text-img-container">
         <p className="userName">
-          {user && user.displayName} - {timeCalc(Date.now(), time)}
+          {op && op.displayName} - {timeCalc(Date.now(), time)}
         </p>
         <p className="howl-text">{text}</p>
         <div className="img-container">
-          {image ? (
-            <img src={image} alt="user uploaded" className="img" />
-          ) : null}
+          {image && <img src={image} alt="user uploaded" className="img" />}
         </div>
         <div className="buttons-container">
           <div className="buttons">
@@ -97,7 +102,7 @@ const Howl = ({ howl }) => {
               <FontAwesomeIcon
                 icon={faStar}
                 className={
-                  user && likes.includes(user.id)
+                  currentUser && likes.includes(currentUser.uid)
                     ? "image-icon liked"
                     : "image-icon"
                 }
@@ -107,36 +112,20 @@ const Howl = ({ howl }) => {
           </div>
         </div>
         {commenting && (
-          <div className="comment-form">
-            <form action="submit" onSubmit={submitComment} id={docId}>
-              <input
-                type="text"
-                name="comment-input"
-                className="comment-input"
-                maxLength={128}
-                onChange={handleChange}
-                value={newComment}
-                placeholder="Enter comment"
-              />
-              <div className="buttons">
-                <button type="submit">Submit</button>
-                <button onClick={() => toggleCommenting(!commenting)}>
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
+          <CommentInput
+            submitComment={submitComment}
+            docId={docId}
+            toggleCommenting={toggleCommenting}
+            commenting={commenting}
+            handleChange={handleChange}
+            newComment={newComment}
+          />
         )}
         <div className="comments">
-          {comments
-            ? comments.map((comment, index) => {
-                return (
-                  <p key={index} className="comment">
-                    {comment}
-                  </p>
-                );
-              })
-            : null}
+          {comments &&
+            comments.map((comment, index) => {
+              return <Comment key={`comment${index}`} comment={comment} />;
+            })}
         </div>
       </div>
     </div>
