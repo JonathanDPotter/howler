@@ -46,7 +46,7 @@ const HowlInput = () => {
       setInputImg(null);
     };
 
-    if (inputImg) {
+    const getURLAndAddHowl = () => {
       const ref = storage.ref();
       const name = inputImg.name;
       const metadata = { contentType: inputImg.type };
@@ -58,9 +58,9 @@ const HowlInput = () => {
           imgRef = url;
         })
         .then(() => addHowl());
-    } else {
-      addHowl();
-    }
+    };
+
+    inputImg ? getURLAndAddHowl() : addHowl();
   };
 
   const handleChange = (event) => {

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { firestore } from "../../../firebase-store";
+import { firestore, storage } from "../../../firebase-store";
 import { useFirestoreConnect } from "react-redux-firebase";
 // components
 import Avatar from "../../sections/Avatar/Avatar";
@@ -12,25 +12,57 @@ const Profile = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [photoURL, setPhotoURL] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const currentUser = useSelector((state) => state.firebase.auth);
+  const { auth } = useSelector((state) => state.firebase);
+  const { users } = useSelector((state) => state.firestore.ordered);
+
+  useEffect(() => {
+    const updateState = () => {
+      const { name, bio, photoURL } = currentUser;
+      setPhotoURL(photoURL);
+      setName(name);
+      setBio(bio);
+    };
+    users && setCurrentUser(users.find((user) => user.uid === auth.uid));
+    // add existing profile to state
+    currentUser && updateState();
+  }, [users, currentUser, setCurrentUser, auth.uid]);
 
   const onSubmit = (event) => {
     event.preventDefault();
 
-    firestore
-      .collection("users")
-      .doc(currentUser.uid)
-      .update({ name, bio, photoURL });
+    const update = () => {
+      firestore
+        .collection("users")
+        .doc(currentUser.uid)
+        .update({ name, bio, photoURL });
+    };
+
+    const getURLAndUpdate = () => {
+      const ref = storage.ref();
+      const name = inputImg.name;
+      const metadata = { contentType: inputImg.type };
+      const task = ref.child(name).put(inputImg, metadata);
+
+      task
+        .then((snapshot) => snapshot.ref.getDownloadURL())
+        .then((url) => {
+          setPhotoURL(url);
+        })
+        .then(() => update());
+    };
+
+    inputImg ? getURLAndUpdate() : update();
   };
 
   return (
     <div className="profile-page">
       <Avatar
-        photoURL={currentUser.photoURL}
-        displayName={currentUser.displayName}
+        photoURL={currentUser ? currentUser.photoURL : ""}
+        displayName={currentUser ? currentUser.displayName : ""}
       />
-      <h1 className="user-name">{currentUser.displayName}</h1>
+      <h1 className="user-name">{currentUser && currentUser.displayName}</h1>
       <form action="submit" className="profile-form" onSubmit={onSubmit}>
         <label htmlFor="name">Name</label>
         <input
