@@ -13,7 +13,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 const HowlInput = () => {
   useFirestoreConnect([{ collection: "users" }]);
-  // local state
+
   const [inputText, setInputText] = useState("");
   const [inputImg, setInputImg] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useFirebase } from "react-redux-firebase";
 import { useHistory } from "react-router";
+// styles
+import "./auth.scss";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -14,23 +16,16 @@ const SignIn = () => {
 
     firebase
       .auth()
-      .setPersistence(firebase.auth.Persistence.SESSION)
-      .then(() => {
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            history.push("/");
-          })
-          .catch((error) => {
-            window.alert(error.message);
-          });
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        history.push("/");
       })
       .catch((error) => {
         window.alert(error.message);
       });
     console.log("submit");
   };
+
   return (
     <div className="page-container">
       <h1 className="page-name">Sign In</h1>

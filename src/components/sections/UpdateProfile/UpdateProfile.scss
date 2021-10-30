@@ -1,0 +1,26 @@
+@use "../../../theme";
+
+.modal-back {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: theme.$modal-back;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .update-body {
+    height: 50vh;
+    width: 50vw;
+    background-color: theme.$back-white;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
+}

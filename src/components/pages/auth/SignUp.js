@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useFirebase } from "react-redux-firebase";
 import { useHistory } from "react-router";
 import { firestore } from "../../../firebase-store";
+// styles
 import "./auth.scss";
 
 const SignUp = () => {
