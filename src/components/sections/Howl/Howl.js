@@ -35,15 +35,21 @@ const Howl = ({ howl }) => {
 
   const handleLike = () => {
     const index = likes.indexOf(currentUser.uid);
-    let newLikes = [];
+    let newLikes = [...likes];
 
-    index !== 0
-      ? likes.includes(currentUser.id)
-        ? (newLikes = { likes: [likes.splice(index, 1)] })
-        : (newLikes = { likes: [...likes, currentUser.uid] })
-      : (newLikes = { likes: [] });
+    if (index > 0) {
+      newLikes.splice(index, 1);
+    } else if (index === 0) {
+      if (likes.length > 1) {
+        newLikes.splice(index, 1);
+      } else {
+        newLikes = [];
+      }
+    } else {
+      newLikes = [...newLikes, currentUser.uid];
+    }
 
-    firestore.collection("howls").doc(docId).update(newLikes);
+    firestore.collection("howls").doc(docId).update({ likes: newLikes });
   };
 
   const handleChange = (event) => {
