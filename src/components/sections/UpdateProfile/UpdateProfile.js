@@ -11,7 +11,6 @@ const UpdateProfile = ({ toggleUpdating }) => {
   const [inputImg, setInputImg] = useState(null);
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
 
   const { auth } = useSelector((state) => state.firebase);
@@ -19,10 +18,10 @@ const UpdateProfile = ({ toggleUpdating }) => {
 
   useEffect(() => {
     const updateState = () => {
-      const { name, bio, photoURL } = currentUser;
-      setPhotoURL(photoURL);
+      const { name, bio } = currentUser;
       setName(name);
       setBio(bio);
+      setInputImg(null);
     };
     users && setCurrentUser(users.find((user) => user.uid === auth.uid));
     // add existing profile to state
@@ -32,11 +31,11 @@ const UpdateProfile = ({ toggleUpdating }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const update = () => {
+    const update = (url = "") => {
       firestore
         .collection("users")
         .doc(currentUser.uid)
-        .update({ name, bio, photoURL });
+        .update(inputImg ? { name, bio, photoURL: url } : { name, bio });
     };
 
     const getURLAndUpdate = () => {
@@ -48,9 +47,8 @@ const UpdateProfile = ({ toggleUpdating }) => {
       task
         .then((snapshot) => snapshot.ref.getDownloadURL())
         .then((url) => {
-          setPhotoURL(url);
-        })
-        .then(() => update());
+          update(url);
+        });
     };
 
     inputImg ? getURLAndUpdate() : update();
@@ -77,7 +75,6 @@ const UpdateProfile = ({ toggleUpdating }) => {
             accept="image/jpg image/png"
             onChange={(event) => {
               setInputImg(event.target.files[0]);
-              setPhotoURL(URL.createObjectURL(event.target.files[0]));
             }}
           />
           {inputImg && (

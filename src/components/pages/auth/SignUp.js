@@ -50,9 +50,7 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password, displayName, handle);
     if (!users.find((user) => user.handle === handle)) {
-      console.log("worked");
       if (password === passwordConfirm) {
         createNewUser();
         resetState();
