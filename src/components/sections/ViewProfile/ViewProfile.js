@@ -1,41 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import React, { useState } from "react";
 // components
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 
-const ViewProfile = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+const ViewProfile = ({ close, user, update }) => {
   const [updating, toggleUpdating] = useState(false);
-
-  const history = useHistory();
-
-  const { auth } = useSelector((state) => state.firebase);
-  const { users } = useSelector((state) => state.firestore.ordered);
-
-  useEffect(() => {
-    users && setCurrentUser(users.find((user) => user.uid === auth.uid));
-  }, [users, currentUser, setCurrentUser, auth]);
 
   return (
     <div className="profile-view">
       <div className="image-container">
-        <img
-          src={currentUser && currentUser.photoURL}
-          alt={currentUser && currentUser.name}
-        />
+        <img src={user.photoURL} alt={user.name} />
       </div>
       <div className="name-bio-container">
         <h1 className="user-name">
-          {currentUser && currentUser.name}@{currentUser && currentUser.handle}
+          {user.name}@{user.handle}
         </h1>
-        <p className="bio">{currentUser && currentUser.bio}</p>
+        <p className="bio">{user.bio}</p>
       </div>
       <div className="buton-container">
-        <button className="btn" onClick={() => toggleUpdating(!updating)}>
-          Update Profile
-        </button>
-        <button className="btn" onClick={() => history.goBack()}>
+        {update && (
+          <button className="btn" onClick={() => toggleUpdating(!updating)}>
+            Update Profile
+          </button>
+        )}
+        <button className="btn" onClick={close}>
           Close
         </button>
       </div>

@@ -6,6 +6,7 @@ import { firestore } from "../../../firebase-store";
 import Avatar from "../Avatar/Avatar";
 import CommentInput from "./CommentInput";
 import Comment from "./Comment";
+import ViewProfile from "../ViewProfile/ViewProfile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // functions
 import timeCalc from "./timeCalc";
@@ -21,6 +22,7 @@ const Howl = ({ howl }) => {
   const [newComment, setNewComment] = useState("");
   const [users, setUsers] = useState(null);
   const [op, setOp] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
 
   const { docId, userId, text, likes, comments, time, image } = howl;
 
@@ -82,10 +84,12 @@ const Howl = ({ howl }) => {
   return (
     <div className="howl">
       <div className="avatar-container">
-        <Avatar
-          photoURL={op ? op.photoURL : ""}
-          displayName={op ? op.displayName : ""}
-        />
+        <button className="show-profile" onClick={() => setShowProfile(true)}>
+          <Avatar
+            photoURL={op ? op.photoURL : ""}
+            displayName={op ? op.displayName : ""}
+          />
+        </button>
       </div>
       <div className="name-text-img-container">
         <p className="userName">
@@ -125,6 +129,13 @@ const Howl = ({ howl }) => {
             commenting={commenting}
             handleChange={handleChange}
             newComment={newComment}
+          />
+        )}
+        {showProfile && (
+          <ViewProfile
+            user={op}
+            close={() => setShowProfile(false)}
+            update={false}
           />
         )}
         <div className="comments">

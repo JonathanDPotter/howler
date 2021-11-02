@@ -6,7 +6,15 @@
   width: 100%;
   display: flex;
   padding: 1rem;
-
+  .avatar-container {
+    button {
+      border: none;
+      background-color: theme.$back-white;
+      :hover {
+        cursor: pointer;
+      }
+    }
+  }
   .name-text-img-container {
     width: 100%;
     margin: 1.5rem auto;
@@ -70,6 +78,16 @@
       flex-direction: column;
       align-items: center;
     }
+  }
+  .profile-view {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
   }
   .comments {
     .comment {
