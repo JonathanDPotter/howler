@@ -1,0 +1,15 @@
+.profile-view {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  img,
+  .howler-icon {
+    height: 40vh;
+  }
+}

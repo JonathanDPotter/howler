@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const CommentInput = ({
   submitComment,
@@ -8,12 +8,16 @@ const CommentInput = ({
   handleChange,
   newComment,
 }) => {
+  useEffect(() => {
+    document.getElementById("comment-input").focus();
+  }, []);
+
   return (
     <div className="comment-form">
       <form action="submit" onSubmit={submitComment} id={docId}>
         <input
           type="text"
-          name="comment-input"
+          id="comment-input"
           className="comment-input"
           maxLength={128}
           onChange={handleChange}

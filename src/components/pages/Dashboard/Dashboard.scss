@@ -2,21 +2,23 @@
 
 .page-container {
   min-height: 100vh;
+  height: fit-content;
   width: 100vw;
   display: grid;
-  grid-template-columns: 2fr 6fr 2fr;
+  grid-template-columns: 20vw 60vw 20vw;
   grid-template-areas: "left middle right";
 
   .sidebar-container {
     grid-area: left;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .middle-container {
     grid-area: middle;
     width: 100%;
     min-height: 100vh;
+    height: fit-content;
     border-right: theme.$main-border;
     border-left: theme.$main-border;
     display: flex;

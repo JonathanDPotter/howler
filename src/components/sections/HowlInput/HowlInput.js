@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuid } from "uuid";
 import { useFirestoreConnect } from "react-redux-firebase";
-//components
-import Avatar from "../Avatar/Avatar";
 import { storage, firestore } from "../../../firebase-store";
 import { useSelector } from "react-redux";
+//components
+import Avatar from "../Avatar/Avatar";
+import Loading from "../../utilities/Loading";
 //styles
 import "./HowlInput.scss";
 //icons
@@ -74,12 +75,16 @@ const HowlInput = () => {
       <div className="howl-box">
         <form className="howl-form" onSubmit={handleSubmit}>
           <div className="avatar-howl-container">
-            {currentUser && currentUser.displayName}
             <Avatar
               photoURL={currentUser ? currentUser.photoURL : ""}
               displayName={currentUser ? currentUser.name : ""}
               className="avatar"
             />
+            {currentUser && (
+              <span className="user-name">
+                {currentUser.name}@{currentUser.handle}
+              </span>
+            )}
             <textarea
               id="howl-input"
               className="howl-input"
@@ -122,14 +127,10 @@ const HowlInput = () => {
     );
   };
 
-  const loading = () => {
-    return <div className="loading">Loading...</div>;
-  };
-
   if (auth) {
     return loaded();
   } else {
-    return loading();
+    return <Loading />;
   }
 };
 

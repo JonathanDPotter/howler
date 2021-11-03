@@ -92,9 +92,9 @@ const Howl = ({ howl }) => {
         </button>
       </div>
       <div className="name-text-img-container">
-        <p className="userName">
-          {op && op.displayName} - {timeCalc(Date.now(), time)}
-        </p>
+        <span className="userName">
+          {op && `${op.displayName}@${op.handle}`} -{timeCalc(Date.now(), time)}
+        </span>
         <p className="howl-text">{text}</p>
         <div className="img-container">
           {image && <img src={image} alt="user uploaded" className="img" />}
@@ -118,7 +118,7 @@ const Howl = ({ howl }) => {
                 }
               />
             </button>
-            <p>{likes.length > 0 && likes.length}</p>
+            <p className={likes.length === 0 && "invisible"}>{likes.length}</p>
           </div>
         </div>
         {commenting && (

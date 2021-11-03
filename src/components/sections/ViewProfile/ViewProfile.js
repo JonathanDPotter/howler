@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 // components
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
+// images
+import { ReactComponent as HowlerIcon } from "../../../images/howlerIcon.svg";
+// styles
+import "./ViewProfile.scss";
 
 const ViewProfile = ({ close, user, update }) => {
   const [updating, toggleUpdating] = useState(false);
@@ -8,7 +12,11 @@ const ViewProfile = ({ close, user, update }) => {
   return (
     <div className="profile-view">
       <div className="image-container">
-        <img src={user.photoURL} alt={user.name} />
+        {user.photoURL ? (
+          <img src={user.photoURL} alt={user.name} />
+        ) : (
+          <HowlerIcon fill="#1D9BF0" className="howler-icon" />
+        )}
       </div>
       <div className="name-bio-container">
         <h1 className="user-name">
