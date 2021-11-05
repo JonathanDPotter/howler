@@ -1,0 +1,19 @@
+@use "../../../theme";
+
+.about-page {
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10vh 30vw;
+  text-align: left;
+
+  p {
+    text-indent: 2rem;
+  }
+
+  .btn {
+    @include theme.button-mixin;
+  }
+}

@@ -15,6 +15,7 @@
 
     .avatar-howl-container {
       display: flex;
+      align-items: center;
 
       .avatar {
         min-height: 80px;
@@ -69,13 +70,7 @@
         }
 
         .howl-btn {
-          border: none;
-          border-radius: 30px;
-          padding: 0 1rem 0 1rem;
-          font-size: 1rem;
-          font-weight: bold;
-          color: white;
-          background-color: theme.$main-blue;
+          @include theme.button-mixin;
         }
       }
     }

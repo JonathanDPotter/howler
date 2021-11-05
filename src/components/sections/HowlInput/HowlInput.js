@@ -80,11 +80,6 @@ const HowlInput = () => {
               displayName={currentUser ? currentUser.name : ""}
               className="avatar"
             />
-            {currentUser && (
-              <span className="user-name">
-                {currentUser.name}@{currentUser.handle}
-              </span>
-            )}
             <textarea
               id="howl-input"
               className="howl-input"

@@ -22,7 +22,7 @@ const Comment = ({ comment }) => {
       <button onClick={() => setShowProfile(true)} className="avatar-button">
         <Avatar photoURL={poster.photoURL} displayName={poster.displayName} />
       </button>
-      <span>{poster && `${poster.displayName} - ${comment.text}`}</span>
+      <p>{poster && `${poster.displayName} - ${comment.text}`}</p>
       {showProfile && (
         <ViewProfile
           user={poster}

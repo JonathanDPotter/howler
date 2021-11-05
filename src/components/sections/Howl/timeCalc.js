@@ -10,8 +10,6 @@ const timeCalc = (nowTime, rawTime) => {
     return `${Math.floor(minutes)}m`;
   } else if (minutes < 1440) {
     return `${Math.floor(minutes / 60)}h`;
-  } else if (minutes < 2880) {
-    return `1 Day ago`;
   } else {
     return `${Math.floor(minutes / 1440)}d`;
   }

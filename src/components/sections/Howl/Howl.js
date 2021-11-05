@@ -90,11 +90,11 @@ const Howl = ({ howl }) => {
             displayName={op ? op.displayName : ""}
           />
         </button>
-      </div>
-      <div className="name-text-img-container">
-        <span className="userName">
+        <p>
           {op && `${op.displayName}@${op.handle}`} -{timeCalc(Date.now(), time)}
-        </span>
+        </p>
+      </div>
+      <div className="text-img-container">
         <p className="howl-text">{text}</p>
         <div className="img-container">
           {image && <img src={image} alt="user uploaded" className="img" />}

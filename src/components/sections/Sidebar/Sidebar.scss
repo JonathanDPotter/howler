@@ -3,15 +3,17 @@
 $icon-sizing: 1.7rem;
 
 @mixin icon-margin {
-  margin-top: $icon-sizing;
-  margin-left: 10vw;
+  margin: $icon-sizing 1rem 0 2rem;
 }
 
 .sidebar {
   width: 100%;
+  min-height: 100vh;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
+  font-size: $icon-sizing;
+  text-align: right;
 
   .howler-icon {
     @include icon-margin;
@@ -21,11 +23,18 @@ $icon-sizing: 1.7rem;
   .nav {
     display: flex;
     flex-direction: column;
-    font-size: $icon-sizing;
 
-    .icon {
-      @include icon-margin;
+    .link {
+      text-decoration: none;
       color: theme.$main-blue;
+
+      .icon {
+        @include icon-margin;
+      }
+
+      .link-label {
+        font-size: 1rem !important;
+      }
     }
   }
 }

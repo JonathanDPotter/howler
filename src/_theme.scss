@@ -2,7 +2,7 @@
 
 $main-blue: #1da1f2;
 $back-white: #fff;
-$line-color: #DBDCDD;
+$line-color: #dbdcdd;
 $modal-back: rgba(0, 0, 0, 0.3);
 
 // sizing
@@ -14,3 +14,16 @@ $line-size: 1px;
 $main-border: $line-size solid $line-color;
 
 $border-radius: 50px;
+
+// button style
+
+@mixin button-mixin {
+  border: none;
+  border-radius: 30px;
+  padding: 0 1rem 0 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $back-white;
+  background-color: $main-blue;
+  cursor: pointer;
+}

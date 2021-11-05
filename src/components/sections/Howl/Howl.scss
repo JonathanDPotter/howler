@@ -1,21 +1,31 @@
 @use "../../../theme";
 
 .howl {
-  border-bottom: theme.$line-size solid theme.$line-color;
+  border-bottom: theme.$main-border;
   height: fit-content;
   width: 100%;
   display: flex;
+  flex-direction: column;
   padding: 1rem;
+
   .avatar-container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+
     button {
       border: none;
       background-color: theme.$back-white;
-      :hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
+    }
+
+    p {
+      margin-left: 2rem;
     }
   }
-  .name-text-img-container {
+
+  .text-img-container {
     width: 100%;
     margin: 1.5rem auto;
 
@@ -41,13 +51,16 @@
       }
     }
   }
+
   .buttons-container {
     width: 30%;
     padding: 1rem;
+
     .buttons {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
+
       button,
       p {
         color: theme.$main-blue;
@@ -55,12 +68,14 @@
         cursor: pointer;
         border: none;
         background-color: theme.$back-white;
+
         :active {
           font-size: 1.5rem;
         }
       }
     }
   }
+
   .comment-form {
     height: 100vh;
     width: 100vw;
@@ -70,6 +85,7 @@
     background-color: theme.$modal-back;
     display: flex;
     flex-direction: column;
+
     form {
       width: 50vw;
       height: 30vh;
@@ -80,18 +96,31 @@
       align-items: center;
     }
   }
+
   .comments {
-    .comment {
-      margin: 1rem 5rem;
-    }
+    margin: 0 -1rem;
+
     .avatar-button {
       border: none;
       background-color: theme.$back-white;
     }
+
+    .comment {
+      padding: 1rem 5rem;
+      display: flex;
+      align-items: center;
+      border-top: theme.$main-border;
+
+      p {
+        margin-left: 2rem;
+      }
+    }
   }
+
   .liked {
     color: rgb(224, 224, 43);
   }
+
   .invisible {
     opacity: 0;
   }

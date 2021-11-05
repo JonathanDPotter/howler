@@ -1,10 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useFirestoreConnect } from "react-redux-firebase";
 // components
 import SignUp from "./components/pages/auth/SignUp";
@@ -14,6 +10,7 @@ import Profile from "./components/pages/Profile/Profile";
 import Dashboard from "./components/pages/Dashboard/Dashbaord";
 import Loading from "./components/utilities/Loading";
 import Landing from "./components/pages/Landing/Landing";
+import About from "./components/pages/About/About";
 // style
 import "./App.scss";
 
@@ -42,6 +39,9 @@ const App = () => {
         </Route>
         <Route exact path="/dashboard">
           <Dashboard />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
       </Switch>
     </Router>
