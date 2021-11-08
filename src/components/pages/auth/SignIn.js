@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFirebase } from "react-redux-firebase";
 import { useHistory } from "react-router";
 // styles
-import "./auth.scss";
+import "./SignIn.scss";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");

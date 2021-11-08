@@ -1,0 +1,85 @@
+@use "../../../theme";
+
+.signup-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+
+  .image-container {
+    height: 50vh;
+    width: 100vw;
+    order: 2;
+    display: grid;
+    grid-template: "box" 100% / 100%;
+    justify-items: center;
+    align-items: center;
+
+    img {
+      height: 100%;
+      width: 100%;
+      grid-area: box;
+      z-index: 1;
+    }
+
+    .img-icon {
+      height: 30vh;
+      grid-area: box;
+      z-index: 2;
+    }
+  }
+
+  section {
+    padding: 5vh 30vw 5vh 20vw;
+
+    .form-icon {
+      height: 3rem;
+    }
+
+    h1 {
+      font-size: 4rem;
+    }
+
+    form {
+      width: 50vw;
+      display: flex;
+      flex-direction: column;
+      margin: 5vh 0;
+
+      input,
+      button {
+        @include theme.rounded-border-mixin;
+        margin-top: 0.5rem;
+      }
+    }
+
+    p,
+    form {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media only screen and (min-width: 1020px) {
+    flex-direction: row;
+    justify-content: left;
+
+    .image-container {
+      height: 100vh;
+      width: 50vw;
+      order: 1;
+    }
+
+    section {
+      height: 100vh;
+      width: 50vh;
+      order: 2;
+      padding: 18vh 5vw;
+
+      form {
+        width: 25vw;
+      }
+    }
+  }
+}

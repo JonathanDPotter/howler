@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import { useFirebase } from "react-redux-firebase";
 // styles
-import "./auth.scss";
+import "./SignOut.scss";
 
 const SignOut = () => {
   const firebase = useFirebase();

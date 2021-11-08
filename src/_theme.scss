@@ -27,3 +27,8 @@ $border-radius: 50px;
   background-color: $main-blue;
   cursor: pointer;
 }
+
+@mixin rounded-border-mixin {
+  border: $main-border;
+  border-radius: $border-radius;
+}

@@ -99,7 +99,7 @@ const HowlInput = () => {
             />
           )}
           <div className="buttons">
-            <label htmlFor="image-input">
+            <label htmlFor="image-input" title="image input">
               <FontAwesomeIcon icon={faImage} className="image-icon" />
             </label>
             <input
