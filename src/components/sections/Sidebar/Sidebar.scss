@@ -24,10 +24,9 @@ $icon-sizing: 1.7rem;
     display: flex;
     flex-direction: column;
 
-    .link {
+    .link, .signout {
       text-decoration: none;
       color: theme.$main-blue;
-
       .icon {
         @include icon-margin;
       }

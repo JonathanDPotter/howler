@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // components
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SignOut from "../SignOut/SignOut";
 // images & icons
 import { ReactComponent as HowlerIcon } from "../../../images/howlerIcon.svg";
 import { faHome, faUser, faUserSlash } from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +10,8 @@ import { faHome, faUser, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
+  const [signOut, setSignOut] = useState(false);
+
   return (
     <div className="sidebar">
       <Link to="/about">
@@ -37,7 +40,7 @@ const Sidebar = () => {
             fixedWidth
           />
         </Link>
-        <Link to="/signout" title="signout" className="link">
+        <div className="signout" onClick={() => setSignOut(true)}>
           <label htmlFor="signout" className="link-label">
             Sign Out
           </label>
@@ -47,8 +50,9 @@ const Sidebar = () => {
             className="icon"
             fixedWidth
           />
-        </Link>
+        </div>
       </nav>
+      {signOut && <SignOut cancel={() => setSignOut(false)} />}
     </div>
   );
 };
