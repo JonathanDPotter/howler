@@ -5,7 +5,6 @@ import { useFirestoreConnect } from "react-redux-firebase";
 // components
 import SignUp from "./components/pages/auth/SignUp";
 import SignIn from "./components/pages/auth/SignIn";
-import SignOut from "./components/pages/auth/SignOut";
 import Profile from "./components/pages/Profile/Profile";
 import Dashboard from "./components/pages/Dashboard/Dashbaord";
 import Loading from "./components/utilities/Loading";
@@ -30,9 +29,6 @@ const App = () => {
         </Route>
         <Route exact path="/signup">
           <SignUp />
-        </Route>
-        <Route exact path="/signout">
-          <SignOut />
         </Route>
         <Route exact path="/profile">
           <Profile />

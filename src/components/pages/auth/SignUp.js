@@ -7,7 +7,7 @@ import { firestore } from "../../../firebase-store";
 import signupBack from "../../../images/signupBack.png";
 import { ReactComponent as HowlerIcon } from "../../../images/howlerIcon.svg";
 // styles
-import "./SignUp.scss";
+import "./auth.scss";
 
 const SignUp = () => {
   const [displayName, setDisplayName] = useState("");
@@ -69,7 +69,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-page">
+    <div className="auth-page">
       <div className="image-container">
         <HowlerIcon fill="#fff" className="img-icon" />
 
@@ -82,7 +82,7 @@ const SignUp = () => {
       <section className="signup-form">
         <HowlerIcon fill="#1D9BF0" className="form-icon" />
         <h1 className="page-name">Happening now</h1>
-        <h2 className="sub-title">Join Howler today.</h2>
+        <h2 className="sub-title">Join Howler today</h2>
         <form action="submit" className="signup-form" onSubmit={handleSubmit}>
           <label htmlFor="display-name">Display Name: </label>
           <input
@@ -128,14 +128,16 @@ const SignUp = () => {
             required
           />
           <input type="submit" value="submit" />
-          <button onClick={() => history.push("/signin")}>Sign In</button>
         </form>
         <div className="bottom-text">
           <p className="legal">
             By signing up, you agree to the Terms of Service and Privacy Policy,
             including Cookie Use.
           </p>
-          <p className="sign-in">Already have an account? Sign in</p>
+          <br />
+          <p className="sign-in">
+            Already have an account? <a href="/signin">Sign in</a>
+          </p>
         </div>
       </section>
     </div>

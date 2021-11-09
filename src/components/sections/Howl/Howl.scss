@@ -14,14 +14,14 @@
     display: flex;
     align-items: center;
 
+    p {
+      text-indent: 2rem;
+    }
+
     button {
       border: none;
       background-color: theme.$back-white;
       cursor: pointer;
-    }
-
-    p {
-      margin-left: 2rem;
     }
   }
 
@@ -35,8 +35,9 @@
 
     .howl-text {
       margin: 1rem 0;
-      text-indent: 1rem;
+      white-space: pre-line;
     }
+
     .img-container {
       width: 100%;
       display: flex;

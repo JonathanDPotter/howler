@@ -1,6 +1,6 @@
 @use "../../../theme";
 
-.signup-page {
+.auth-page {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -42,6 +42,15 @@
       font-size: 4rem;
     }
 
+    h2 {
+      font-size: 2rem;
+    }
+
+    h1,
+    h2 {
+      font-weight: 1000;
+    }
+
     form {
       width: 50vw;
       display: flex;
@@ -52,12 +61,24 @@
       button {
         @include theme.rounded-border-mixin;
         margin-top: 0.5rem;
+        padding-left: 0.5rem;
       }
     }
 
     p,
-    form {
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: theme.$main-blue;
+    }
+
+    .legal {
       font-size: 0.8rem;
+      font-weight: 500;
     }
   }
 
