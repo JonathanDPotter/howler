@@ -8,32 +8,64 @@ $icon-sizing: 1.7rem;
 
 .sidebar {
   width: 100%;
-  min-height: 100vh;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
+  position: fixed;
+  top: 90vh;
+  height: 10vh;
+  height: fit-content;
   font-size: $icon-sizing;
-  text-align: right;
+  background-color: theme.$back-white;
+  border-top: theme.$main-border;
+  align-items: center;
+  padding-bottom: 2vh;
+  overflow-x: hidden;
 
   .howler-icon {
-    @include icon-margin;
-    height: 2rem;
+    display: none;
   }
 
   .nav {
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
+    justify-content: space-around;
+    width: 100%;
 
-    .link, .signout {
+    .link,
+    .signout {
       text-decoration: none;
       color: theme.$main-blue;
+      cursor: pointer;
       .icon {
         @include icon-margin;
       }
 
-      .link-label {
+      label {
         font-size: 1rem !important;
+        display: none;
       }
+    }
+  }
+
+  @media only screen and (min-width: 500px) {
+    top: 0;
+    min-height: 100vh;
+    text-align: right;
+    position: sticky;
+    position: -webkit-sticky;
+    border-top: none;
+
+    .howler-icon {
+      @include icon-margin;
+      height: 2.2rem;
+      display: inline-block;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @media only screen and (min-width: 1020px) {
+    label {
+      display: inline !important;
     }
   }
 }

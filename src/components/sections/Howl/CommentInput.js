@@ -14,7 +14,12 @@ const CommentInput = ({
 
   return (
     <div className="comment-form">
-      <form action="submit" onSubmit={submitComment} id={docId}>
+      <form
+        action="submit"
+        onSubmit={submitComment}
+        id={docId}
+        className="comment-form-form"
+      >
         <input
           type="text"
           id="comment-input"

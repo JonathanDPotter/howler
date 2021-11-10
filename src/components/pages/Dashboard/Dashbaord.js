@@ -3,6 +3,7 @@ import React from "react";
 import Sidebar from "../../sections/Sidebar/Sidebar";
 import HowlInput from "../../sections/HowlInput/HowlInput";
 import Timeline from "../../sections/Timeline/Timeline";
+import MobileHeader from "../../sections/MobileHeader/MobileHeader";
 // styles
 import "./Dashboard.scss";
 
@@ -14,6 +15,7 @@ const Dashboard = () => {
       </div>
       <div className="middle-container">
         <HowlInput />
+        <MobileHeader />
         <Timeline />
       </div>
       <div className="right-empty"></div>

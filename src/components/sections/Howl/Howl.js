@@ -118,7 +118,9 @@ const Howl = ({ howl }) => {
                 }
               />
             </button>
-            <p className={likes.length === 0 && "invisible"}>{likes.length}</p>
+            <p className={likes.length === 0 ? "invisible" : "visible"}>
+              {likes.length}
+            </p>
           </div>
         </div>
         {commenting && (
