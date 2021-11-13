@@ -1,0 +1,47 @@
+@use "../../../theme";
+
+.view-container {
+  @include theme.modal-mixin;
+
+  .profile-view {
+    min-height: 80vh;
+    width: 70vw;
+    background-color: theme.$back-white;
+    @include theme.flex-center;
+    flex-direction: column;
+    text-align: center;
+
+    img,
+    .howler-icon {
+      height: 30vh;
+    }
+
+    h1,
+    img,
+    .howler-icon,
+    p,
+    button {
+      margin-top: 1rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      max-width: 60vw;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+      justify-content: space-evenly;
+      margin-bottom: 1rem;
+
+      button {
+        @include theme.button-mixin;
+      }
+    }
+  }
+}

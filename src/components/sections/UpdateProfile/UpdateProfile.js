@@ -5,7 +5,7 @@ import { useFirestoreConnect } from "react-redux-firebase";
 // styles
 import "./UpdateProfile.scss";
 
-const Profile = ({ toggleUpdating}) => {
+const Profile = ({ toggleUpdating }) => {
   useFirestoreConnect([{ collection: "users" }]);
 
   const [inputImg, setInputImg] = useState(null);
@@ -29,8 +29,6 @@ const Profile = ({ toggleUpdating}) => {
   }, [users, currentUser, setCurrentUser, auth.uid]);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-
     const update = (url = "") => {
       firestore
         .collection("users")
@@ -68,7 +66,7 @@ const Profile = ({ toggleUpdating}) => {
             value={name}
           />
           <br />
-          <label htmlFor="image-input">Avatar Image</label>
+          <label htmlFor="image-input">New Avatar Image</label>
           <input
             type="file"
             id="image-input"
@@ -95,7 +93,12 @@ const Profile = ({ toggleUpdating}) => {
             value={bio}
             placeholder="enter a short description of yourself"
           ></textarea>
-          <input type="submit" value="submit" />
+          <button className="cancel" onClick={() => toggleUpdating(false)}>
+            Cancel
+          </button>
+          <button type="submit" value="submit">
+            Submit
+          </button>
         </form>
       </div>
     </div>

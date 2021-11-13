@@ -50,32 +50,32 @@
     }
 
     .buttons {
+      width: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      padding: 1rem 20% 0 5%;
+      align-items: center;
+      min-height: 30vh;
       font-size: 2rem;
+      @media only screen and (min-width: 500px) {
+        flex-direction: row;
+        min-height: 0 !important;
+        padding: 1rem 20% 0 5%;
+      }
 
       #image-input {
         display: none;
       }
 
-      .btn-label {
-        display: flex;
+      button {
+        @include theme.button-mixin;
+      }
 
-        .chars-remaining {
-          font-size: 0.8rem;
-          position: relative;
-          margin: auto 1rem;
-        }
-
-        .howl-btn,
-        .cancel-btn {
-          @include theme.button-mixin;
-        }
-
-        .cancel-btn {
-          margin-right: 1rem;
-        }
+      .chars-remaining {
+        display: inline;
+        font-size: 0.8rem;
+        position: relative;
+        margin: auto 1rem;
       }
     }
   }

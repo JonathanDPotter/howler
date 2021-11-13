@@ -1,19 +1,11 @@
 @use "../../../theme";
 
 .modal-back {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: theme.$modal-back;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include theme.modal-mixin;
 
   .update-body {
-    height: 50vh;
-    width: 50vw;
+    min-height: 50vh;
+    min-width: 50vw;
     background-color: theme.$back-white;
 
     form {
@@ -21,6 +13,27 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
+      margin: 1rem;
+
+      input {
+        @include theme.rounded-border-mixin;
+        padding-left: 0.5rem;
+      }
+
+      #image-input {
+        border: none;
+      }
+
+      textarea {
+        border: theme.$main-border;
+        border-radius: 5px;
+        resize: none;
+        padding: .5rem;
+      }
+
+      button {
+        @include theme.button-mixin;
+      }
     }
   }
 }

@@ -111,21 +111,21 @@ const HowlInput = ({ cancel }) => {
               accept="image/jpg image/png"
               onChange={(event) => setInputImg(event.target.files[0])}
             />
-            <label htmlFor="howl-btn" className="btn-label">
-              {inputText.length > 0 && (
-                <p className="chars-remaining">{281 - inputText.length}</p>
-              )}
-              {cancel && (
-                <button
-                  className="cancel-btn"
-                  onClick={() => history.goBack()}
-                >
-                  Cancel
-                </button>
-              )}
-              <button id="howl-btn" className="howl-btn" type="submit">
-                Howl
+            {cancel && (
+              <button className="cancel-btn" onClick={() => history.goBack()}>
+                Cancel
               </button>
+            )}
+            <button id="howl-btn" className="howl-btn" type="submit">
+              Howl
+            </button>
+            <label htmlFor="howl-btn" className="btn-label">
+              <p
+                style={inputText.length === 0 ? { opacity: 0 } : { opacity: 1 }}
+                className="chars-remaining"
+              >
+                {281 - inputText.length}
+              </p>
             </label>
           </div>
         </form>

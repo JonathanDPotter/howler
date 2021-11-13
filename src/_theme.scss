@@ -21,7 +21,7 @@ $border-radius: 50px;
 @mixin button-mixin {
   border: none;
   border-radius: 30px;
-  padding: 0 1rem 0 1rem;
+  padding: 0 1rem;
   font-size: 1rem;
   font-weight: bold;
   color: $back-white;
