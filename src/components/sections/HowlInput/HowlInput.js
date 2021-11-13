@@ -112,14 +112,19 @@ const HowlInput = ({ cancel }) => {
               onChange={(event) => setInputImg(event.target.files[0])}
             />
             {cancel && (
-              <button className="cancel-btn" onClick={() => history.goBack()}>
+              <button
+                id="cancel"
+                className="cancel-btn"
+                type="reset"
+                onClick={() => history.goBack()}
+              >
                 Cancel
               </button>
             )}
-            <button id="howl-btn" className="howl-btn" type="submit">
+            <button id="howl" className="howl-btn" type="submit">
               Howl
             </button>
-            <label htmlFor="howl-btn" className="btn-label">
+            <label htmlFor="howl" className="btn-label">
               <p
                 style={inputText.length === 0 ? { opacity: 0 } : { opacity: 1 }}
                 className="chars-remaining"
