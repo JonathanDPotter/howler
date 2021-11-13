@@ -5,7 +5,7 @@ import { useFirestoreConnect } from "react-redux-firebase";
 // styles
 import "./UpdateProfile.scss";
 
-const UpdateProfile = ({ toggleUpdating }) => {
+const Profile = ({ toggleUpdating}) => {
   useFirestoreConnect([{ collection: "users" }]);
 
   const [inputImg, setInputImg] = useState(null);
@@ -102,4 +102,4 @@ const UpdateProfile = ({ toggleUpdating }) => {
   );
 };
 
-export default UpdateProfile;
+export default Profile;

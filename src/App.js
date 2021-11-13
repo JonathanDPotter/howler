@@ -10,7 +10,7 @@ import Dashboard from "./components/pages/Dashboard/Dashbaord";
 import Loading from "./components/utilities/Loading";
 import Landing from "./components/pages/Landing/Landing";
 import About from "./components/pages/About/About";
-import SignOut from "./components/pages/SignOut/SignOut";
+import SignOut from "./components/sections/SignOut/SignOut";
 import HowlInput from "./components/sections/HowlInput/HowlInput";
 // styles
 import "./App.scss";

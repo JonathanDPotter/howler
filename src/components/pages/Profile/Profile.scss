@@ -1,0 +1,5 @@
+@use "../../../theme";
+
+.profile-page {
+  @include theme.modal-mixin;
+}

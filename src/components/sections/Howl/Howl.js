@@ -6,7 +6,7 @@ import { firestore } from "../../../firebase-store";
 import Avatar from "../Avatar/Avatar";
 import CommentInput from "./CommentInput";
 import Comment from "./Comment";
-import ViewProfile from "../ViewProfile/ViewProfile";
+import Profile from "../UpdateProfile/UpdateProfile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // functions
 import timeCalc from "./timeCalc";
@@ -141,7 +141,7 @@ const Howl = ({ howl }) => {
           />
         )}
         {showProfile && (
-          <ViewProfile
+          <Profile
             user={op}
             close={() => setShowProfile(false)}
             update={false}
