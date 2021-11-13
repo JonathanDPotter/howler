@@ -146,4 +146,32 @@
   .invisible {
     opacity: 0;
   }
+
+  .delete-modal {
+    @include theme.modal-mixin;
+    background-color: rgba(0, 0, 0, 0.3);
+    form {
+      height: 50vh;
+      width: 50vw;
+      background-color: theme.$back-white;
+      @include theme.rounded-border-mixin;
+      @include theme.flex-center;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      h1 {
+        width: 50%;
+      }
+
+      .buttons {
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+
+        input {
+          @include theme.button-mixin;
+        }
+      }
+    }
+  }
 }
