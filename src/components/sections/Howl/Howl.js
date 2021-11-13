@@ -7,13 +7,14 @@ import Avatar from "../Avatar/Avatar";
 import CommentInput from "./CommentInput";
 import Comment from "./Comment";
 import ViewProfile from "../ViewProfile/ViewProfile";
+import DeleteHowl from "./DeleteHowl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // functions
 import timeCalc from "./timeCalc";
 // styles
 import "./Howl.scss";
 // icons
-import { faStar, faComment } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faComment, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Howl = ({ howl }) => {
   useFirestoreConnect([{ collection: "users" }]);
@@ -23,6 +24,7 @@ const Howl = ({ howl }) => {
   const [users, setUsers] = useState(null);
   const [op, setOp] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   const { docId, userId, text, likes, comments, time, image } = howl;
 
@@ -81,6 +83,10 @@ const Howl = ({ howl }) => {
       .then(() => resetComment());
   };
 
+  const handleDelete = () => {
+    setDeleting(true);
+  };
+
   return (
     <div className="howl">
       <div className="avatar-container">
@@ -128,6 +134,11 @@ const Howl = ({ howl }) => {
             <p className={likes.length === 0 ? "invisible" : "visible"}>
               {likes.length}
             </p>
+            {currentUser && currentUser.uid === userId && (
+              <button className="delete-button" onClick={handleDelete}>
+                <FontAwesomeIcon icon={faTrash} className="image-icon" />
+              </button>
+            )}
           </div>
         </div>
         {commenting && (
@@ -146,6 +157,9 @@ const Howl = ({ howl }) => {
             close={() => setShowProfile(false)}
             update={false}
           />
+        )}
+        {deleting && (
+          <DeleteHowl docId={docId} close={() => setDeleting(false)} />
         )}
         <div className="comments">
           {comments &&
