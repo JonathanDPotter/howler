@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { storage, firestore } from "../../../firebase-store";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 //components
 import Avatar from "../Avatar/Avatar";
 import Loading from "../../utilities/Loading";
@@ -12,8 +13,9 @@ import "./HowlInput.scss";
 //icons
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-const HowlInput = () => {
+const HowlInput = ({ cancel }) => {
   useFirestoreConnect([{ collection: "users" }]);
+  const history = useHistory();
 
   const [inputText, setInputText] = useState("");
   const [inputImg, setInputImg] = useState(null);
@@ -45,6 +47,7 @@ const HowlInput = () => {
       });
       setInputText("");
       setInputImg(null);
+      cancel && history.goBack();
     };
 
     const getURLAndAddHowl = () => {
@@ -112,7 +115,15 @@ const HowlInput = () => {
               {inputText.length > 0 && (
                 <p className="chars-remaining">{281 - inputText.length}</p>
               )}
-              <button id="howl-btn" className="howl-btn">
+              {cancel && (
+                <button
+                  className="cancel-btn"
+                  onClick={() => history.goBack()}
+                >
+                  Cancel
+                </button>
+              )}
+              <button id="howl-btn" className="howl-btn" type="submit">
                 Howl
               </button>
             </label>

@@ -1,2 +1,5 @@
+@use "./theme";
 
-
+.howl-input-container {
+  @include theme.modal-mixin;
+}

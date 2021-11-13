@@ -1,27 +1,15 @@
 @use "../../../theme";
 
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .signout-modal {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: theme.$modal-back;
-  @include flex-center();
+  @include theme.modal-mixin;
 
   form {
-    height: 40vh;
+    height: 50vh;
     width: 40vw;
     background-color: theme.$back-white;
-    @include flex-center();
     flex-direction: column;
     border-radius: theme.$border-radius;
+    @include theme.flex-center();
 
     h1 {
       font-size: 1.5rem;
@@ -34,8 +22,9 @@
     }
 
     h1,
-    p {
-      margin-bottom: 1rem;
+    p,
+    input {
+      margin-bottom: 0.5rem;
     }
 
     input {

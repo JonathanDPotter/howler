@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 // components
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SignOut from "../SignOut/SignOut";
 // images & icons
 import { ReactComponent as HowlerIcon } from "../../../images/howlerIcon.svg";
-import { faHome, faUser, faUserSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFeatherAlt,
+  faHome,
+  faUser,
+  faUserSlash,
+} from "@fortawesome/free-solid-svg-icons";
 // style
-import "./Sidebar.scss";
+import "./Toolbar.scss";
 
-const Sidebar = () => {
-  const [signOut, setSignOut] = useState(false);
-
+const Toolbar = () => {
   return (
-    <div className="sidebar">
+    <div className="toolbar">
       <Link to="/about">
         <HowlerIcon fill="#1da1f2" className="howler-icon" title="about" />
       </Link>
-      <nav className="nav">
+      <div className="buttons">
         <Link to="/" title="home" className="link">
           <label htmlFor="home" className="link-label">
             Home
@@ -40,7 +42,7 @@ const Sidebar = () => {
             fixedWidth
           />
         </Link>
-        <div className="signout" onClick={() => setSignOut(true)}>
+        <Link to="signout" title="log out" className="link">
           <label htmlFor="signout" className="link-label">
             Sign Out
           </label>
@@ -50,11 +52,19 @@ const Sidebar = () => {
             className="icon"
             fixedWidth
           />
-        </div>
-      </nav>
-      {signOut && <SignOut cancel={() => setSignOut(false)} />}
+        </Link>
+        <Link to="/howlinput" title="Add Howl" className="link">
+          <label htmlFor="addHowl">Add Howl</label>
+          <FontAwesomeIcon
+            id="addHowl"
+            icon={faFeatherAlt}
+            className="icon"
+            fixedWidth
+          />
+        </Link>
+      </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default Toolbar;

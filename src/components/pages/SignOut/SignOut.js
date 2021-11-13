@@ -4,7 +4,7 @@ import { useFirebase } from "react-redux-firebase";
 // styles
 import "./SignOut.scss";
 
-const SignOut = ({ cancel }) => {
+const SignOut = () => {
   const firebase = useFirebase();
   const history = useHistory();
 
@@ -26,7 +26,7 @@ const SignOut = ({ cancel }) => {
           });
         break;
       case "Cancel":
-        cancel();
+        history.goBack();
         break;
       default:
         console.log("Something went wrong.");
@@ -38,9 +38,7 @@ const SignOut = ({ cancel }) => {
     <div className="signout-modal">
       <form className="signout-form">
         <h1 className="really">Log out of Howler?</h1>
-        <p className="message">
-          You can always log back in at any time.
-        </p>
+        <p className="message">You can always log back in at any time.</p>
         <input type="button" value="Sign Out" onClick={handleClick} />
         <br />
         <input type="button" value="Cancel" onClick={handleClick} />

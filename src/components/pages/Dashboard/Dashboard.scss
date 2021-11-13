@@ -13,6 +13,7 @@
 
   .middle-container {
     order: 1;
+    width: 100%;
   }
 
   @media only screen and (min-width: 500px) {
@@ -23,12 +24,10 @@
     .sidebar-container {
       grid-area: left;
       width: 100%;
-      min-height: 100vh;
     }
 
     .middle-container {
       grid-area: middle;
-      width: 100%;
       min-height: 100vh;
       height: fit-content;
       border-right: theme.$main-border;

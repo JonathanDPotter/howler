@@ -9,15 +9,8 @@
   align-items: center;
   border: theme.$main-border;
   border-radius: theme.$border-radius;
+
   .howler-icon {
     height: 40px;
-  }
-
-  @media only screen and (min-width: 500px) {
-    height: 80px;
-    width: 80px;
-    .howler-icon {
-      height: 60px;
-    }
   }
 }

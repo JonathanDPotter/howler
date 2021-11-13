@@ -4,7 +4,7 @@ $main-blue: #1da1f2;
 $back-white: #fff;
 $line-color: #dbdcdd;
 $gray-text: #6D7B86;
-$modal-back: rgba(0, 0, 0, 0.3);
+$modal-back: #999;
 
 // sizing
 
@@ -32,4 +32,20 @@ $border-radius: 50px;
 @mixin rounded-border-mixin {
   border: $main-border;
   border-radius: $border-radius;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin modal-mixin {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $modal-back;
+  @include flex-center;
 }

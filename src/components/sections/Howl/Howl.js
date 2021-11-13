@@ -97,7 +97,14 @@ const Howl = ({ howl }) => {
       <div className="text-img-container">
         <p className="howl-text">{text}</p>
         <div className="img-container">
-          {image && <img src={image} alt="user uploaded" className="img" />}
+          {image && (
+            <img
+              src={image}
+              alt="user uploaded"
+              className="img"
+              loading="lazy"
+            />
+          )}
         </div>
         <div className="buttons-container">
           <div className="buttons">
