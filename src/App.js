@@ -12,6 +12,9 @@ import Landing from "./components/pages/Landing/Landing";
 import About from "./components/pages/About/About";
 import SignOut from "./components/pages/SignOut/SignOut";
 import HowlInput from "./components/sections/HowlInput/HowlInput";
+import Terms from "./components/pages/legal/Terms";
+import Privacy from "./components/pages/legal/Privacy";
+import Cookie from "./components/pages/legal/Cookie";
 // styles
 import "./App.scss";
 
@@ -31,6 +34,15 @@ const App = () => {
         </Route>
         <Route exact path="/signup">
           <SignUp />
+        </Route>
+        <Route exact path="/terms">
+          <Terms />
+        </Route>
+        <Route exact path="/privacy">
+          <Privacy />
+        </Route>
+        <Route exact path="/cookie">
+          <Cookie />
         </Route>
         <Route exact path="/profile">
           <Profile />

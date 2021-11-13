@@ -131,8 +131,10 @@ const SignUp = () => {
         </form>
         <div className="bottom-text">
           <p className="legal">
-            By signing up, you agree to the Terms of Service and Privacy Policy,
-            including Cookie Use.
+            By signing up, you agree to the{" "}
+            <a href="/terms">Terms of Service</a> and{" "}
+            <a href="/privacy">Privacy Policy</a>, including{" "}
+            <a href="/cookie">Cookie Use</a>.
           </p>
           <br />
           <p className="sign-in">
