@@ -14,14 +14,14 @@ const ViewProfile = ({ close, user, update }) => {
       <div className="profile-view">
         <div className="image-container">
           {user.photoURL ? (
-            <img src={user.photoURL} alt={user.name} />
+            <img src={user.photoURL} alt={user.displayName} />
           ) : (
             <HowlerIcon fill="#1D9BF0" className="howler-icon" />
           )}
         </div>
         <div className="name-bio-container">
           <h1 className="user-name">
-            {user.name}@{user.handle}
+            {user.displayName}@{user.handle}
           </h1>
           <p className="bio">{user.bio}</p>
         </div>

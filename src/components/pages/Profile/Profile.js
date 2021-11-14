@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 // components
-import Avatar from "../../sections/Avatar/Avatar";
+import Loading from "../../utilities/Loading";
 import ViewProfile from "../../sections/ViewProfile/ViewProfile";
 
 const Profile = () => {
@@ -19,7 +19,7 @@ const Profile = () => {
 
   return (
     <div className="profile-page">
-      <Avatar />
+      <Loading />
       {currentUser && (
         <ViewProfile
           user={currentUser}

@@ -9,7 +9,7 @@ const Profile = ({ toggleUpdating }) => {
   useFirestoreConnect([{ collection: "users" }]);
 
   const [inputImg, setInputImg] = useState(null);
-  const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [bio, setBio] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -18,8 +18,8 @@ const Profile = ({ toggleUpdating }) => {
 
   useEffect(() => {
     const updateState = () => {
-      const { name, bio } = currentUser;
-      setName(name);
+      const { displayName, bio } = currentUser;
+      setDisplayName(displayName);
       setBio(bio);
       setInputImg(null);
     };
@@ -33,7 +33,9 @@ const Profile = ({ toggleUpdating }) => {
       firestore
         .collection("users")
         .doc(currentUser.uid)
-        .update(inputImg ? { name, bio, photoURL: url } : { name, bio });
+        .update(
+          inputImg ? { displayName, bio, photoURL: url } : { displayName, bio }
+        );
     };
 
     const getURLAndUpdate = () => {
@@ -57,13 +59,13 @@ const Profile = ({ toggleUpdating }) => {
     <div className="modal-back">
       <div className="update-body">
         <form action="submit" className="profile-form" onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Display Name</label>
           <input
             type="text"
             id="name"
             placeholder="enter a new name"
-            onChange={(event) => setName(event.target.value)}
-            value={name}
+            onChange={(event) => setDisplayName(event.target.value)}
+            value={displayName}
           />
           <br />
           <label htmlFor="image-input">New Avatar Image</label>

@@ -21,19 +21,21 @@ const SignUp = () => {
   const firebase = useFirebase();
   const history = useHistory();
 
+  const bio = "new user";
+
   const createNewUser = () => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        const { uid, photoURL } = userCredential.user;
+        const { uid } = userCredential.user;
         userCredential.user.updateProfile({ displayName }).then(
           firestore.collection("users").doc(uid).set({
             displayName,
             email,
             uid,
-            photoURL,
             handle,
+            bio,
           })
         );
         history.push("/");
