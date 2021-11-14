@@ -119,6 +119,7 @@ const Howl = ({ howl }) => {
                 icon={faComment}
                 className="image-icon"
                 onClick={() => toggleCommenting(!commenting)}
+                title="comment"
               />
             </button>
             <button className="like-button" onClick={handleLike}>
@@ -129,13 +130,18 @@ const Howl = ({ howl }) => {
                     ? "image-icon liked"
                     : "image-icon"
                 }
+                title="like"
               />
             </button>
             <p className={likes.length === 0 ? "invisible" : "visible"}>
               {likes.length}
             </p>
             {currentUser && currentUser.uid === userId && (
-              <button className="delete-button" onClick={handleDelete}>
+              <button
+                className="delete-button"
+                onClick={handleDelete}
+                title="delete"
+              >
                 <FontAwesomeIcon icon={faTrash} className="image-icon" />
               </button>
             )}

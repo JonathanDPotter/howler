@@ -14,6 +14,7 @@
   .middle-container {
     order: 1;
     width: 100%;
+    padding-bottom: 5vh;
   }
 
   @media only screen and (min-width: 500px) {
@@ -34,6 +35,7 @@
       border-left: theme.$main-border;
       display: flex;
       flex-direction: column;
+      padding-bottom: 0;
     }
 
     .right-empty {

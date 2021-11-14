@@ -53,7 +53,7 @@ const Toolbar = () => {
             fixedWidth
           />
         </Link>
-        <Link to="/howlinput" title="Add Howl" className="link">
+        <Link to="/howlinput" title="new howl" className="link">
           <label htmlFor="addHowl">Add Howl</label>
           <FontAwesomeIcon
             id="addHowl"
