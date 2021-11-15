@@ -5,6 +5,7 @@ import { useFirestoreConnect } from "react-redux-firebase";
 import { storage, firestore } from "../../../firebase-store";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import Compress from "compress.js";
 //components
 import Avatar from "../Avatar/Avatar";
 import Loading from "../../utilities/Loading";
@@ -24,11 +25,15 @@ const HowlInput = ({ cancel }) => {
   const { auth } = useSelector((state) => state.firebase);
   const { users } = useSelector((state) => state.firestore.ordered);
 
+  let imgRef = "";
+
   useEffect(() => {
     users && setCurrentUser(users.find((user) => user.uid === auth.uid));
   }, [users, auth]);
 
-  let imgRef = "";
+  const resizeImage = () => {
+    // write stuff to resize the image here
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -109,7 +114,10 @@ const HowlInput = ({ cancel }) => {
               type="file"
               id="image-input"
               accept="image/jpg image/png"
-              onChange={(event) => setInputImg(event.target.files[0])}
+              onChange={async (event) => {
+                const file = event.target.files[0];
+                setInputImg(file);
+              }}
             />
             {cancel && (
               <button

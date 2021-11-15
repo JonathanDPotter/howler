@@ -3299,15 +3299,15 @@
     "pako" "~1.0.5"
 
 "browserslist@^4", "browserslist@^4.0.0", "browserslist@^4.12.0", "browserslist@^4.14.5", "browserslist@^4.16.3", "browserslist@^4.6.2", "browserslist@^4.6.4":
-  "integrity" "sha512-vIyhWmIkULaq04Gt93txdh+j02yX/JzlyhLYbV3YQCn/zvES3JnY7TifHHvvr1w5hTDluNKMkV05cs4vy8Q7sw=="
-  "resolved" "https://registry.npmjs.org/browserslist/-/browserslist-4.16.3.tgz"
-  "version" "4.16.3"
+  "integrity" "sha512-8ScCzdpPwR2wQh8IT82CA2VgDwjHyqMovPBZSNH54+tm4Jk2pCuv90gmAdH6J84OCRWi0b4gMe6O6XPXuJnjgQ=="
+  "resolved" "https://registry.npmjs.org/browserslist/-/browserslist-4.18.1.tgz"
+  "version" "4.18.1"
   dependencies:
-    "caniuse-lite" "^1.0.30001181"
-    "colorette" "^1.2.1"
-    "electron-to-chromium" "^1.3.649"
+    "caniuse-lite" "^1.0.30001280"
+    "electron-to-chromium" "^1.3.896"
     "escalade" "^3.1.1"
-    "node-releases" "^1.1.70"
+    "node-releases" "^2.0.1"
+    "picocolors" "^1.0.0"
 
 "browserslist@4.14.2":
   "integrity" "sha512-HI4lPveGKUR0x2StIz+2FXfDk9SfVMrxn6PLh1JeGUwcuoDkdKZebWiyLRJ68iIPDpMI4JLVDf7S7XzslgWOhw=="
@@ -3499,10 +3499,10 @@
     "lodash.memoize" "^4.1.2"
     "lodash.uniq" "^4.5.0"
 
-"caniuse-lite@^1.0.0", "caniuse-lite@^1.0.30000981", "caniuse-lite@^1.0.30001109", "caniuse-lite@^1.0.30001125", "caniuse-lite@^1.0.30001181":
-  "integrity" "sha512-xJJqzyd+7GCJXkcoBiQ1GuxEiOBCLQ0aVW9HMekifZsAVGdj5eJ4mFB9fEhSHipq9IOk/QXFJUiIr9lZT+EsGw=="
-  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001191.tgz"
-  "version" "1.0.30001191"
+"caniuse-lite@^1.0.0", "caniuse-lite@^1.0.30000981", "caniuse-lite@^1.0.30001109", "caniuse-lite@^1.0.30001125", "caniuse-lite@^1.0.30001280":
+  "integrity" "sha512-kFXwYvHe5rix25uwueBxC569o53J6TpnGu0BEEn+6Lhl2vsnAumRFWEBhDft1fwyo6m1r4i+RqA4+163FpeFcA=="
+  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001280.tgz"
+  "version" "1.0.30001280"
 
 "capture-exit@^2.0.0":
   "integrity" "sha512-PiT/hQmTonHhl/HFGN+Lx3JJUznrVYJ3+AQsnthneZbvW7x+f08Tk7yLJTLEOUvBTbduLeeBkxEaYXUOUrRq6g=="
@@ -3784,6 +3784,13 @@
   "version" "3.0.3"
   dependencies:
     "arity-n" "^1.0.4"
+
+"compress.js@^1.2.1":
+  "integrity" "sha512-+Goh6V8oXvg4EZjGJCswGr/U0hkgdk2msUE+oNPr0Toj9B/cJ9LTbDxO5VNMJGfJvLMHrElAEh7UQIYdmZB01g=="
+  "resolved" "https://registry.npmjs.org/compress.js/-/compress.js-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "regenerator-runtime" "^0.13.9"
 
 "compressible@~2.0.16":
   "integrity" "sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg=="
@@ -4656,10 +4663,10 @@
   "resolved" "https://registry.npmjs.org/ejs/-/ejs-2.7.4.tgz"
   "version" "2.7.4"
 
-"electron-to-chromium@^1.3.564", "electron-to-chromium@^1.3.649":
-  "integrity" "sha512-RTD97QkdrJKaKwRv9h/wGAaoR2lGxNXEcBXS31vjitgTPwTWAbLdS7cEsBK68eEQy7p6YyT8D5BxBEYHu2SuwQ=="
-  "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.671.tgz"
-  "version" "1.3.671"
+"electron-to-chromium@^1.3.564", "electron-to-chromium@^1.3.896":
+  "integrity" "sha512-nRNZhAZ7hVCe75jrCUG7xLOqHMwloJMj6GEXEzY4OMahRGgwerAo+ls/qbqUwFH+E20eaSncKkQ4W8KP5SOiAg=="
+  "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.897.tgz"
+  "version" "1.3.897"
 
 "elliptic@^6.5.3":
   "integrity" "sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ=="
@@ -8006,10 +8013,15 @@
     "uuid" "^8.3.0"
     "which" "^2.0.2"
 
-"node-releases@^1.1.61", "node-releases@^1.1.70":
+"node-releases@^1.1.61":
   "integrity" "sha512-Slf2s69+2/uAD79pVVQo8uSiC34+g8GWY8UH2Qtqv34ZfhYrxpYpfzs9Js9d6O0mbDmALuxaTlplnBTnSELcrw=="
   "resolved" "https://registry.npmjs.org/node-releases/-/node-releases-1.1.70.tgz"
   "version" "1.1.70"
+
+"node-releases@^2.0.1":
+  "integrity" "sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA=="
+  "resolved" "https://registry.npmjs.org/node-releases/-/node-releases-2.0.1.tgz"
+  "version" "2.0.1"
 
 "normalize-package-data@^2.3.2", "normalize-package-data@^2.5.0":
   "integrity" "sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA=="
@@ -8527,6 +8539,11 @@
   "integrity" "sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns="
   "resolved" "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz"
   "version" "2.1.0"
+
+"picocolors@^1.0.0":
+  "integrity" "sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ=="
+  "resolved" "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
+  "version" "1.0.0"
 
 "picomatch@^2.0.4", "picomatch@^2.0.5", "picomatch@^2.2.1", "picomatch@^2.2.2":
   "integrity" "sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg=="
@@ -9660,6 +9677,11 @@
   "resolved" "https://registry.npmjs.org/react-firebase-hooks/-/react-firebase-hooks-3.0.4.tgz"
   "version" "3.0.4"
 
+"react-image-file-resizer@^0.4.7":
+  "integrity" "sha512-Dak7Ecrd6WEV5LjqoRYFI49ASn7eB1VTlrw6dri9HeIMS6aJang4nli6q5xeckEMY+7QwgqgWqAQD5tgkm4bJg=="
+  "resolved" "https://registry.npmjs.org/react-image-file-resizer/-/react-image-file-resizer-0.4.7.tgz"
+  "version" "0.4.7"
+
 "react-is@^16.12.0", "react-is@^16.13.1", "react-is@^16.6.0", "react-is@^16.7.0", "react-is@^16.8.1", "react-is@^16.8.4":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -10035,10 +10057,10 @@
   "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz"
   "version" "0.11.1"
 
-"regenerator-runtime@^0.13.4", "regenerator-runtime@^0.13.7":
-  "integrity" "sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew=="
-  "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz"
-  "version" "0.13.7"
+"regenerator-runtime@^0.13.4", "regenerator-runtime@^0.13.7", "regenerator-runtime@^0.13.9":
+  "integrity" "sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA=="
+  "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
+  "version" "0.13.9"
 
 "regenerator-transform@^0.14.2":
   "integrity" "sha512-eOf6vka5IO151Jfsw2NO9WpGX58W6wWmefK3I1zEGr0lOD0u8rwPaNqQL1aRxUaxLeKO3ArNh3VYg1KbaD+FFw=="
