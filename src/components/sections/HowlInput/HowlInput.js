@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuid } from "uuid";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { storage, firestore } from "../../../firebase-store";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import Compress from "compress.js";
 //components
 import Avatar from "../Avatar/Avatar";
 import Loading from "../../utilities/Loading";
@@ -21,19 +20,30 @@ const HowlInput = ({ cancel }) => {
   const [inputText, setInputText] = useState("");
   const [inputImg, setInputImg] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const imgRef = useRef("");
+  const canvas = useRef(null);
 
   const { auth } = useSelector((state) => state.firebase);
   const { users } = useSelector((state) => state.firestore.ordered);
-
-  let imgRef = "";
 
   useEffect(() => {
     users && setCurrentUser(users.find((user) => user.uid === auth.uid));
   }, [users, auth]);
 
-  const resizeImage = () => {
-    // write stuff to resize the image here
-  }
+  useEffect(() => {
+    if (inputImg && canvas) {
+      const image = new Image();
+      image.src = URL.createObjectURL(inputImg);
+      const ctx = canvas.current.getContext("2d");
+      const height = 300;
+      image.onload = () => {
+        const ratio = image.width / image.height;
+        canvas.current.height = height;
+        canvas.current.width = height * ratio;
+        ctx.drawImage(image, 0, 0, height * ratio, height);
+      };
+    }
+  }, [inputImg, canvas]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,7 +54,7 @@ const HowlInput = ({ cancel }) => {
       firestore.collection("howls").doc(docId).set({
         userId: auth.uid,
         text: inputText,
-        image: imgRef,
+        image: imgRef.current,
         time: Date.now(),
         comments: [],
         likes: [],
@@ -64,7 +74,7 @@ const HowlInput = ({ cancel }) => {
       task
         .then((snapshot) => snapshot.ref.getDownloadURL())
         .then((url) => {
-          imgRef = url;
+          imgRef.current = url;
         })
         .then(() => addHowl());
     };
@@ -99,13 +109,7 @@ const HowlInput = ({ cancel }) => {
             ></textarea>
           </div>
           <hr />
-          {inputImg && (
-            <img
-              src={URL.createObjectURL(inputImg)}
-              alt="user input"
-              className="img"
-            />
-          )}
+          {inputImg && <canvas ref={canvas} />}
           <div className="buttons">
             <label htmlFor="image-input" title="image input">
               <FontAwesomeIcon icon={faImage} className="image-icon" />

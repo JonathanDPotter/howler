@@ -24,7 +24,7 @@ const MobileHeader = () => {
         displayName={currentUser ? currentUser.name : ""}
         className="avatar"
       />
-      <strong>Latest Tweets</strong>
+      <strong>Latest Howls</strong>
       <img src={stars} alt="stars" title="always latest" className="stars" />
     </header>
   );
