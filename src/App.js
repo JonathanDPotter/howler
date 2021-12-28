@@ -58,7 +58,7 @@ const App = () => {
         </Route>
         <Route exact path="/howlinput">
           <div className="howl-input-container">
-            <HowlInput cancel={true} />
+            <HowlInput cancel={true} show={true}/>
           </div>
         </Route>
       </Switch>

@@ -13,7 +13,7 @@ import "./HowlInput.scss";
 //icons
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-const HowlInput = ({ cancel }) => {
+const HowlInput = ({ cancel, show }) => {
   useFirestoreConnect([{ collection: "users" }]);
   const history = useHistory();
 
@@ -90,7 +90,7 @@ const HowlInput = ({ cancel }) => {
 
   const loaded = () => {
     return (
-      <div className="howl-box">
+      <div className="howl-box" style={show && { display: "block" }}>
         <form className="howl-form" onSubmit={handleSubmit}>
           <div className="avatar-howl-container">
             <Avatar
