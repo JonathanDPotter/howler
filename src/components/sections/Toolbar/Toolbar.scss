@@ -16,6 +16,7 @@ $icon-sizing: 1.7rem;
   font-size: $icon-sizing;
   background-color: theme.$back-white;
   border-top: theme.$main-border;
+  overflow: hidden;
 
   .howler-icon {
     display: none;
@@ -39,8 +40,10 @@ $icon-sizing: 1.7rem;
   }
 
   @media only screen and (min-width: 500px) {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: fit-content;
     min-height: 100vh;
     text-align: right;
     border-top: none;
@@ -63,6 +66,7 @@ $icon-sizing: 1.7rem;
   @media only screen and (min-width: 1020px) {
     label {
       display: inline !important;
+      margin-left: 1rem;
     }
   }
 }
